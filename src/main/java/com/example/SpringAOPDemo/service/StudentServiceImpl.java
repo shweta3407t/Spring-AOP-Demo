@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 public class StudentServiceImpl  implements  StudentService{
     @Override
     public String createStudent() {
-        System.out.println("Student creating");
-        return "Student created";
+        System.out.println("Student created");
+
+        throw  new RuntimeException("exception accured");
+
+//        return "Student created";
     }
 }
