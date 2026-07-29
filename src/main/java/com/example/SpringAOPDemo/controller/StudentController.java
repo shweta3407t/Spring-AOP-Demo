@@ -2,8 +2,10 @@ package com.example.SpringAOPDemo.controller;
 
 
 import com.example.SpringAOPDemo.service.StudentService;
+import com.example.SpringAOPDemo.student.Student;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,10 +21,10 @@ public class StudentController {
 
 
     @PostMapping
-    public ResponseEntity<String> createStudent(){
-          String student=studentService.createStudent();
+    public ResponseEntity<Student> createStudent(@RequestBody Student student){
+          Student studentResponse=studentService.createStudent(student);
 
-        return   ResponseEntity.ok( student);
+        return   ResponseEntity.ok( studentResponse);
     }
 
 }

@@ -1,16 +1,19 @@
 package com.example.SpringAOPDemo.service;
 
 
+import com.example.SpringAOPDemo.student.Student;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentServiceImpl  implements  StudentService{
+
+
     @Override
-    public String createStudent() {
-        System.out.println("Student created");
+    public Student createStudent(Student student) {
+        System.out.println("student created");
 
-        throw  new RuntimeException("exception accured");
+//        throw new RuntimeException(" error  happened");
 
-//        return "Student created";
+        return student;
     }
 }

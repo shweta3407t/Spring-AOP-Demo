@@ -1,8 +1,10 @@
 package com.example.SpringAOPDemo.service;
 
+import com.example.SpringAOPDemo.student.Student;
+
 public interface StudentService {
 
-    String createStudent();
+    Student createStudent(Student student);
 
 
 }
