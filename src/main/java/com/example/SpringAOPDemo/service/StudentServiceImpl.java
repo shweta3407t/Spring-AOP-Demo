@@ -12,8 +12,14 @@ public class StudentServiceImpl  implements  StudentService{
     public Student createStudent(Student student) {
         System.out.println("student created");
 
-//        throw new RuntimeException(" error  happened");
-
-        return student;
+        throw new RuntimeException(" error  happened");
+//        return student;
     }
+
+    @Override
+    public String dummyMethod(String s) {
+        return s;
+    }
+
+
 }

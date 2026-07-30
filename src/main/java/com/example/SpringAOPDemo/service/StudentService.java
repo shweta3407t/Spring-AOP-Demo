@@ -6,5 +6,7 @@ public interface StudentService {
 
     Student createStudent(Student student);
 
+    String dummyMethod(String s);
+
 
 }

@@ -44,28 +44,51 @@ public class LoggingAspect   {
 //
 //    }
 
-    @Around(" execution(*   com.example.SpringAOPDemo.service.StudentService.createStudent(..))")
-    public Student loginAroundCreate(ProceedingJoinPoint joinPoint) throws Throwable {
+//    @Around(" execution(*   com.example.SpringAOPDemo.service.StudentService.createStudent(..))")
+//    public Student loginAroundCreate(ProceedingJoinPoint joinPoint) throws Throwable {
+//        System.out.println("Starting : " + joinPoint.getSignature().getName());
+//
+//
+//        try{
+//           Student  student=(Student) joinPoint.proceed();
+//            System.out.println("Execution successful");
+//            return  student;
+//        }
+//        catch (Throwable e) {
+//
+//            System.out.println("Execution fail : " + e.getMessage());
+//            throw e;
+//        }
+//        finally {
+//            System.out.println("Execution completed");
+//        }
+
+
+
+    @Around(" execution(*   com.example.SpringAOPDemo.service.StudentService.dummyMethod(..))")
+    public Object loginAroundCreate(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Starting : " + joinPoint.getSignature().getName());
 
+        Object[] arr=joinPoint.getArgs();
 
-        try{
-           Student  student=(Student) joinPoint.proceed();
-            System.out.println("Execution successful");
-            return  student;
-        }
-        catch (Throwable e) {
+        String originalString=(String) arr[0];
 
-            System.out.println("Execution fail : " + e.getMessage());
-            throw e;
-        }
-        finally {
-            System.out.println("Execution completed");
-        }
+        String modifiefString=originalString.toUpperCase();
+
+        Object[] modifiedArray={modifiefString};
 
 
+        String returnType= (String) joinPoint.proceed(modifiedArray);
 
+        returnType=returnType+" : "+ "String Intercepter";
 
+        Object return1=joinPoint.proceed();
+
+        System.out.println("Intercepted request calling again");
+
+        Object return2=joinPoint.proceed();
+
+        return return2;
 
     }
 
